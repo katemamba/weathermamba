@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!--/**
-	 * ...
-	 * @author katemamba
-	 */-->
   <head>
     <style type="text/css">
       html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
@@ -19,11 +15,12 @@
     $( "#slider" ).slider();
   });
   </script>
+
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: { lat: 21.1567, lng: 79.0667},
+          center: { lat: 64, lng: 150},
           zoom: 5
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),

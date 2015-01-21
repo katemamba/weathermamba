@@ -109,7 +109,6 @@ echo json_encode($a);?>
 		var locations = <?php echo json_encode($a); ?>;
 		var i;
 		///alert (locations);
-		var markers=[];
 		for(i=0;i<locations.length;i++){
 			geocoder.geocode( { 'address': locations[i]}, function(results, status) {
 
@@ -117,30 +116,23 @@ echo json_encode($a);?>
 				var latitude = results[0].geometry.location.lat;
 				var longitude = results[0].geometry.location.lng;
 				var p = results[0].geometry.location;
-				var latLng = new google.maps.LatLng(p.lat, p.lng);
-				var marker = new google.maps.Marker({
-					position: latLng,
+				var latlng = new google.maps.LatLng(p.lat, p.lng);
+				createMarker(locations[i],p.lat,p.lng);
+				new google.maps.Marker({
+					position: latlng,
 					map: map
-					title: locations[i]
 				});
-				markers.push(marker);
+
 			}
 		});
-		
-		var infoWindowContent = locations[i];
-		var infoWindow = new google.maps.InfoWindow(), marker, i;
-		google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
-            }
-        })(marker, i));
 		}
-		 
+		
 			/////alert(latitude);
 		
 				
 		
+		}
+	  
 	  
 	  /*
 	  for(i=0,location;location=locations[i];i++){
@@ -185,7 +177,7 @@ echo json_encode($a);?>
 });
 */
 	  //######################################
-	  }
+	  
   google.maps.event.addDomListener(window, 'load', initialize);
 	
     </script>
